@@ -14,6 +14,9 @@ buttonTask1.onclick = () => {
 		if (!isXNumber) return console.log(wrongMassageX);
 		if (!isYNumber) return console.log(wrongMassageY);
 		if ((y === 0) && (znak === '/')) { return console.log('На нуль ділити не можна') };
+		if ((y === 0) && (znak === '%')) { return console.log('На нуль ділити не можна') };
+		// const isZnak = (znak === '^') && ((x < 0) && (y < 0))
+		// if (isZnak) return console.log('В результате будет НаН');
 		arraySign = [{ sign: '+', funct: x + y },
 		{ sign: '-', funct: x - y },
 		{ sign: '*', funct: x * y },
@@ -22,9 +25,9 @@ buttonTask1.onclick = () => {
 		{ sign: '^', funct: x ** y },
 		];
 		const isSignValid = arraySign.findIndex((value) => value.sign === znak) !== -1;
-		if (isSignValid) return console.log(wrongMassageSign);
+		if (!isSignValid) return console.log(wrongMassageSign);
 		let temp = arraySign.filter((value) => value.sign === znak);
-		result = temp[0].funct
+		const result = temp[0].funct
 		console.log(`${x} ${znak} ${y} = ${result}`);
 		return result;
 	}
@@ -40,12 +43,14 @@ function doMathSecond(x, y, znak) {
 	} else if (znak === '*') {
 		return x * y
 	} else if (znak === '/') {
-		if (y === 0) return console.log('На нуль ділити не можна.')
+		if (y === 0) return console.log('На нуль ділити не можна.');
 		return x / y
 	} else if (znak === '%') {
+		if (y === 0) return console.log('На нуль ділити не можна.');
 		return x % y
 	} else if (znak === '^') {
-		return x ** y
+		if ((x < 0) && (y < 0)) return console.log('В результате будет НаН');
+		return x ** y;
 	} else {
 		console.log('математична операція не обрана')
 	}
