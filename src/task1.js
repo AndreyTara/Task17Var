@@ -28,11 +28,11 @@ buttonTask1.onclick = () => {
 		if (!isSignValid) return console.log(wrongMassageSign);
 		let temp = arraySign.filter((value) => value.sign === znak);
 		const result = temp[0].funct
-		console.log(`${x} ${znak} ${y} = ${result}`);
+		alert(`${x} ${znak} ${y} = ${result}`);
 		return result;
 	}
 	const asd = doMath(+xStr, +yStr, signStr);
-	console.log(asd);
+	alert(asd);
 }
 
 function doMathSecond(x, y, znak) {
@@ -52,7 +52,7 @@ function doMathSecond(x, y, znak) {
 		if ((x < 0) && (y < 0)) return console.log('В результате будет НаН');
 		return x ** y;
 	} else {
-		console.log('математична операція не обрана')
+		console.lo('математична операція не обрана')
 	}
 
 }
