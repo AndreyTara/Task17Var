@@ -31,7 +31,7 @@ buttonTask1.onclick = () => {
 		if (!isSignValid) return alert(wrongMassageSign);
 		let temp = arraySign.filter((value) => value.sign === znak);
 		const result = temp[0].funct
-		// alert(`${x} ${znak} ${y} = ${result}`);
+		alert(`${x} ${znak} ${y} = ${result}`);
 		return result;
 	}
 	const asd = doMath(x, y, signStr);
