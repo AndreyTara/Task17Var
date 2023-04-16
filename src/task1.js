@@ -14,10 +14,12 @@ buttonTask1.onclick = () => {
 		const isYNumber = !isNaN(y) && !isNaN(parseFloat(y));
 		if (!isXNumber) { return alert(wrongMassageX) };
 		if (!isYNumber) { return alert(wrongMassageY) };
-		if ((y === 0) && (znak === '/')) { return alert('На нуль ділити не можна') };
-		if ((y === 0) && (znak === '%')) { return alert('На нуль ділити не можна') };
-		const isZnak = (znak === '^') && ((x < 0) && (y < 0))
-		if (isZnak) return console.log('invalid input');
+		if ((znak === '/') && (y === 0)) { return alert('На нуль ділити не можна') };
+		if ((znak === '%') && (y === 0)) { return alert('На нуль ділити не можна') };
+		if (znak === '^') {
+			const isZnakXY = x ** y
+			if (isZnakXY === NaN) return console.log('Invalid input')
+		};
 		arraySign = [{ sign: '+', funct: x + y },
 		{ sign: '-', funct: x - y },
 		{ sign: '*', funct: x * y },
@@ -29,7 +31,7 @@ buttonTask1.onclick = () => {
 		if (!isSignValid) return alert(wrongMassageSign);
 		let temp = arraySign.filter((value) => value.sign === znak);
 		const result = temp[0].funct
-		alert(`${x} ${znak} ${y} = ${result}`);
+		// alert(`${x} ${znak} ${y} = ${result}`);
 		return result;
 	}
 	const asd = doMath(x, y, signStr);
@@ -50,7 +52,7 @@ buttonTask1.onclick = () => {
 // 		if (y === 0) return alert('На нуль ділити не можна.');
 // 		return x % y
 // 	} else if (znak === '^') {
-// 		if ((x < 0) && (y < 0)) return alert('В результате будет НаН');
+// 		if ((x ** y === NaN)) return alert('Invalid value');
 // 		return x ** y;
 // 	} else {
 // 		alert('математична операція не обрана')
